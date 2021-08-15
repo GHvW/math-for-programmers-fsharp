@@ -70,6 +70,25 @@ let perimeter vecs =
         | _ -> 0.0)
     |> Seq.sum
 
+
+let toDegrees r = r * 180.0 / Math.PI
+
+
+let toRadians d = d * Math.PI / 180.0
+
+
+type PolarCoordinate = double * double
+
+let toCartesian polarCoordinate : Vector2D =
+    match polarCoordinate with
+    | (r, theta) -> (r * Math.Cos theta, r * Math.Sin theta)
+
+
+let toPolar vec : PolarCoordinate =
+    match vec with
+    | (x, y) -> (distance vec, Math.Atan2 (y, x))
+
+
 // ---------------------- XPlot Helpers ----------------------
 // let vecArrow (originx: double, originy: double) color (x: double, y: double) =
 //     Annotation(showarrow=true, arrowcolor = color, x = x, y = y, axref="x", ayref="y", ax=originx, ay=originy)
