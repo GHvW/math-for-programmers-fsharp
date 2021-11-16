@@ -1,3 +1,5 @@
+open System
+
 type Vector2D = double * double
 
 
